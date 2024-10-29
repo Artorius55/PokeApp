@@ -2,9 +2,9 @@ package com.arthur.segura.pokeapp.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arthur.segura.pokeapp.data.repository.PreferencesRepository
-import com.arthur.segura.pokeapp.data.repository.PreferencesRepository.Companion.VIEW_GRID
-import com.arthur.segura.pokeapp.data.repository.PreferencesRepository.Companion.VIEW_LIST
+import com.arthur.segura.pokeapp.domain.repository.PreferencesRepository
+import com.arthur.segura.pokeapp.domain.repository.PreferencesRepository.Companion.VIEW_GRID
+import com.arthur.segura.pokeapp.domain.repository.PreferencesRepository.Companion.VIEW_LIST
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -42,7 +42,7 @@ class PreferencesViewModel @Inject constructor(
 
     fun changeViewMode() {
         viewModelScope.launch {
-            val newMode = if (_viewMode.value == "list") VIEW_GRID else VIEW_LIST
+            val newMode = if (_viewMode.value == VIEW_LIST) VIEW_GRID else VIEW_LIST
             preferencesRepository.setViewMode(newMode)
         }
     }

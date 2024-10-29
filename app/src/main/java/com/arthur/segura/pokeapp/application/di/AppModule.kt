@@ -4,8 +4,9 @@ import android.content.Context
 import com.arthur.segura.pokeapp.data.local.dao.PokemonDao
 import com.arthur.segura.pokeapp.data.remote.service.PokemonApi
 import com.arthur.segura.pokeapp.data.repository.PokemonRepositoryImpl
-import com.arthur.segura.pokeapp.data.repository.PreferencesRepository
+import com.arthur.segura.pokeapp.data.repository.PreferencesRepositoryImpl
 import com.arthur.segura.pokeapp.domain.repository.PokemonRepository
+import com.arthur.segura.pokeapp.domain.repository.PreferencesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +29,6 @@ object AppModule {
     fun providePreferencesRepository(
         @ApplicationContext context: Context
     ): PreferencesRepository {
-        return PreferencesRepository(context)
+        return PreferencesRepositoryImpl(context)
     }
 }
